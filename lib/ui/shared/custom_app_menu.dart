@@ -8,6 +8,20 @@ class CustomMenuApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return LayoutBuilder(
+      builder: (_, BoxConstraints constraints) =>
+          (constraints.maxWidth > 520) ? _DesktopMenu() : _MobileMenu(),
+    );
+  }
+}
+
+class _DesktopMenu extends StatelessWidget {
+  const _DesktopMenu({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
       padding: EdgeInsets.symmetric(
@@ -15,6 +29,54 @@ class CustomMenuApp extends StatelessWidget {
         vertical: 10,
       ),
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          CustomFlatButton(
+            text: 'Contador StateFull',
+            onPressed: () =>
+                locator<NavigationService>().navigateTo('/statefull'),
+            icon: Icons.alarm,
+            color: Colors.black,
+          ),
+          SizedBox(
+            width: 10,
+          ),
+          CustomFlatButton(
+            text: 'Contador Provider',
+            onPressed: () =>
+                locator<NavigationService>().navigateTo('/provider'),
+            icon: Icons.settings,
+            color: Colors.black,
+          ),
+          SizedBox(
+            width: 10,
+          ),
+          CustomFlatButton(
+            text: 'Otra Pagina',
+            onPressed: () => locator<NavigationService>().navigateTo('/404'),
+            icon: Icons.error_outline_rounded,
+            color: Colors.black,
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _MobileMenu extends StatelessWidget {
+  const _MobileMenu({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      padding: EdgeInsets.symmetric(
+        horizontal: 20,
+        vertical: 10,
+      ),
+      child: Column(
         children: [
           CustomFlatButton(
             text: 'Contador StateFull',

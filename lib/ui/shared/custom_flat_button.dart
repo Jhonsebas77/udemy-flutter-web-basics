@@ -5,6 +5,7 @@ class CustomFlatButton extends StatelessWidget {
   final Color color;
   final IconData icon;
   final Function onPressed;
+  final double? width;
 
   const CustomFlatButton({
     Key? key,
@@ -12,22 +13,27 @@ class CustomFlatButton extends StatelessWidget {
     required this.onPressed,
     required this.icon,
     this.color = Colors.red,
+    this.width,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return TextButton.icon(
-      style: TextButton.styleFrom(
-        primary: color,
-      ),
-      onPressed: () => onPressed(),
-      icon: Icon(
-        icon,
-      ),
-      label: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Text(
-          text,
+    return Container(
+      width: width,
+      alignment: Alignment.centerLeft,
+      child: TextButton.icon(
+        style: TextButton.styleFrom(
+          primary: color,
+        ),
+        onPressed: () => onPressed(),
+        icon: Icon(
+          icon,
+        ),
+        label: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(
+            text,
+          ),
         ),
       ),
     );
