@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_web_basics/locator.dart';
 import 'package:flutter_web_basics/services/navigation_service.dart';
 import 'package:flutter_web_basics/ui/shared/custom_flat_button.dart';
 
@@ -17,7 +18,8 @@ class CustomMenuApp extends StatelessWidget {
         children: [
           CustomFlatButton(
             text: 'Contador StateFull',
-            onPressed: () => navigationService.navigateTo('/statefull'),
+            onPressed: () =>
+                locator<NavigationService>().navigateTo('/statefull'),
             icon: Icons.alarm,
             color: Colors.black,
           ),
@@ -26,7 +28,8 @@ class CustomMenuApp extends StatelessWidget {
           ),
           CustomFlatButton(
             text: 'Contador Provider',
-            onPressed: () => navigationService.navigateTo('/provider'),
+            onPressed: () =>
+                locator<NavigationService>().navigateTo('/provider'),
             icon: Icons.settings,
             color: Colors.black,
           ),
@@ -35,7 +38,7 @@ class CustomMenuApp extends StatelessWidget {
           ),
           CustomFlatButton(
             text: 'Otra Pagina',
-            onPressed: () => navigationService.navigateTo('/404'),
+            onPressed: () => locator<NavigationService>().navigateTo('/404'),
             icon: Icons.error_outline_rounded,
             color: Colors.black,
           ),
