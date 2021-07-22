@@ -1,26 +1,26 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
-import 'package:flutter_web_basics/ui/pages/counter_page_provider.dart';
-import 'package:flutter_web_basics/ui/pages/counter_page_statefull.dart';
-import 'package:flutter_web_basics/ui/pages/page_not_found.dart';
+import 'package:flutter_web_basics/ui/views/counter_view_provider.dart';
+import 'package:flutter_web_basics/ui/views/counter_view_statefull.dart';
+import 'package:flutter_web_basics/ui/views/view_not_found.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
       case '/statefull':
         return _fadeRoute(
-          child: CounterPageStateFull(),
+          child: CounterViewStateFull(),
           routeName: '/statefull',
         );
       case '/provider':
         return _fadeRoute(
-          child: CounterProviderPage(),
+          child: CounterProviderView(),
           routeName: '/provider',
         );
       default:
         return _fadeRoute(
-          child: NotFoundPage(),
+          child: NotFoundView(),
           routeName: '/404',
         );
     }
