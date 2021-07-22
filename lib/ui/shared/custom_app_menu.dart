@@ -16,7 +16,7 @@ class CustomMenuApp extends StatelessWidget {
         children: [
           CustomFlatButton(
             text: 'Contador StateFull',
-            onPressed: () {},
+            onPressed: () => Navigator.pushNamed(context, '/statefull'),
             icon: Icons.alarm,
             color: Colors.black,
           ),
@@ -25,7 +25,7 @@ class CustomMenuApp extends StatelessWidget {
           ),
           CustomFlatButton(
             text: 'Contador Provider',
-            onPressed: () {},
+            onPressed: () => Navigator.pushNamed(context, '/provider'),
             icon: Icons.settings,
             color: Colors.black,
           ),
@@ -34,7 +34,7 @@ class CustomMenuApp extends StatelessWidget {
           ),
           CustomFlatButton(
             text: 'Otra Pagina',
-            onPressed: () {},
+            onPressed: () => Navigator.pushNamed(context, '/404'),
             icon: Icons.error_outline_rounded,
             color: Colors.black,
           ),

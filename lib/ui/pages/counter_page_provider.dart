@@ -1,18 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_web_basics/providers/counter_provider.dart';
 import 'package:flutter_web_basics/ui/shared/custom_app_menu.dart';
 import 'package:flutter_web_basics/ui/shared/custom_flat_button.dart';
+import 'package:provider/provider.dart';
 
-class CounterProviderPage extends StatefulWidget {
+class CounterProviderPage extends StatelessWidget {
   const CounterProviderPage({Key? key}) : super(key: key);
 
   @override
-  _CounterProviderPageState createState() => _CounterProviderPageState();
+  Widget build(BuildContext context) {
+    return ChangeNotifierProvider(
+      create: (_) => CounterProvider(),
+      child: _CounterProviderPageBody(),
+    );
+  }
 }
 
-class _CounterProviderPageState extends State<CounterProviderPage> {
-  int _counter = 15;
+class _CounterProviderPageBody extends StatelessWidget {
+  _CounterProviderPageBody({
+    Key? key,
+  }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
+    final counterProvider = Provider.of<CounterProvider>(context);
     return Scaffold(
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -33,7 +44,7 @@ class _CounterProviderPageState extends State<CounterProviderPage> {
                 horizontal: 10,
               ),
               child: Text(
-                'Contador: $_counter',
+                'Contador: ${counterProvider.counter}',
                 style: TextStyle(
                   fontSize: 80,
                   fontWeight: FontWeight.bold,
@@ -46,17 +57,13 @@ class _CounterProviderPageState extends State<CounterProviderPage> {
             children: [
               CustomFlatButton(
                 text: 'Incrementar',
-                onPressed: () => setState(
-                  () => _counter++,
-                ),
+                onPressed: () => counterProvider.increment(),
                 icon: Icons.add_circle,
                 color: Colors.green,
               ),
               CustomFlatButton(
                 text: 'Decrementar',
-                onPressed: () => setState(
-                  () => _counter--,
-                ),
+                onPressed: () => counterProvider.decrease(),
                 icon: Icons.remove_circle,
               ),
             ],

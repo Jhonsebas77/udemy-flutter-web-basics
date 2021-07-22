@@ -18,7 +18,7 @@ class NotFoundPage extends StatelessWidget {
               height: 20,
             ),
             Text(
-              '404 Not Found',
+              'No se encontro la pagina que buscabas',
             ),
             CustomFlatButton(
               text: 'Regresar',
