@@ -9,8 +9,9 @@ class CustomMenuApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
-      builder: (_, BoxConstraints constraints) =>
-          (constraints.maxWidth > 520) ? _DesktopMenu() : _MobileMenu(),
+      builder: (_, BoxConstraints constraints) => (constraints.maxWidth > 520)
+          ? SizedBox(height: 80, child: _DesktopMenu())
+          : _MobileMenu(),
     );
   }
 }
@@ -28,8 +29,8 @@ class _DesktopMenu extends StatelessWidget {
         horizontal: 20,
         vertical: 10,
       ),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      child: ListView(
+        scrollDirection: Axis.horizontal,
         children: [
           CustomFlatButton(
             text: 'Contador StateFull',
@@ -55,6 +56,26 @@ class _DesktopMenu extends StatelessWidget {
             text: 'Otra Pagina',
             onPressed: () => locator<NavigationService>().navigateTo('/404'),
             icon: Icons.error_outline_rounded,
+            color: Colors.black,
+          ),
+          SizedBox(
+            width: 10,
+          ),
+          CustomFlatButton(
+            text: 'Contador StateFull 100',
+            onPressed: () =>
+                locator<NavigationService>().navigateTo('/statefull/100'),
+            icon: Icons.alarm,
+            color: Colors.black,
+          ),
+          SizedBox(
+            width: 10,
+          ),
+          CustomFlatButton(
+            text: 'Contador Provider Query',
+            onPressed: () =>
+                locator<NavigationService>().navigateTo('/provider?base:100'),
+            icon: Icons.settings,
             color: Colors.black,
           ),
         ],

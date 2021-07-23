@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_web_basics/ui/shared/custom_flat_button.dart';
 
 class CounterViewStateFull extends StatefulWidget {
-  const CounterViewStateFull({Key? key}) : super(key: key);
+  final String base;
+  const CounterViewStateFull({
+    Key? key,
+    this.base = '10',
+  }) : super(key: key);
 
   @override
   _CounterViewStateFullState createState() => _CounterViewStateFullState();
@@ -10,6 +14,13 @@ class CounterViewStateFull extends StatefulWidget {
 
 class _CounterViewStateFullState extends State<CounterViewStateFull> {
   int _counter = 10;
+
+  @override
+  void initState() {
+    super.initState();
+    _counter = int.parse(widget.base);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(

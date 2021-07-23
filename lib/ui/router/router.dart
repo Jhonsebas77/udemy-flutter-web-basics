@@ -18,6 +18,11 @@ class Flurorouter {
       transitionType: TransitionType.fadeIn,
     );
     router.define(
+      '/statefull/:base',
+      handler: _stateFullCounterHandler,
+      transitionType: TransitionType.fadeIn,
+    );
+    router.define(
       '/provider',
       handler: _providerCounterHandler,
       transitionType: TransitionType.fadeIn,
@@ -30,7 +35,13 @@ class Flurorouter {
   );
 
   static Handler _stateFullCounterHandler = Handler(
-    handlerFunc: (context, params) => CounterViewStateFull(),
+    handlerFunc: (context, params) {
+      String _getBase = params['base']?[0] ?? '0';
+      String _base = (int.tryParse(_getBase) != null) ? _getBase : '0';
+      return CounterViewStateFull(
+        base: _base,
+      );
+    },
   );
 
   static Handler _providerCounterHandler = Handler(
