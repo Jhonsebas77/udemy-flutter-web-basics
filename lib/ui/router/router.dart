@@ -45,7 +45,12 @@ class Flurorouter {
   );
 
   static Handler _providerCounterHandler = Handler(
-    handlerFunc: (context, params) => CounterProviderView(),
+    handlerFunc: (context, params) {
+      String _getBase = params['base']?[0] ?? '15';
+      return CounterProviderView(
+        base: _getBase,
+      );
+    },
   );
 
   static Handler _pageNotFoundHandler = Handler(

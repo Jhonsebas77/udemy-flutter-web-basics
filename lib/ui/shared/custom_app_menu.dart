@@ -74,7 +74,7 @@ class _DesktopMenu extends StatelessWidget {
           CustomFlatButton(
             text: 'Contador Provider Query',
             onPressed: () =>
-                locator<NavigationService>().navigateTo('/provider?base:100'),
+                locator<NavigationService>().navigateTo('/provider?base=200'),
             icon: Icons.settings,
             color: Colors.black,
           ),
